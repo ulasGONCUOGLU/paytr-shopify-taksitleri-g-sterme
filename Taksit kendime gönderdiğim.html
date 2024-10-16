@@ -1,0 +1,65 @@
+<!-- Ek Buton eklemek istenirse -->
+
+<button id="ProductSubmitButton-template--21889899462966__main" type="submit" name="add" class="product-form__submit button button--full-width button--secondary" onclick="yukariGitVeAc()">
+    <span>Taksit seçeneklerini görüntüle</span>
+    
+    <div class="loading__spinner hidden">
+        <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+</button>
+
+
+<script>
+    function yukariGitVeAc() {
+        var hedefElement = document.getElementById("odeme-yontemi");
+        hedefElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        hedefElement.open = true;
+    }
+</script>
+
+<!-- Ek Buton sonu -->
+
+
+
+<!-- Taksit Seçenekleri -->
+
+<div class="product__accordion accordion quick-add-hidden">
+    <details id="odeme-yontemi">
+        <summary role="button" aria-expanded="false">
+            <div class="summary__title" style="justify-content: center;">
+                <h2 class="h4 accordion__title inline-richtext">
+                    Taksit Seçenekleri
+                </h2>
+            </div>
+            <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                </path>
+            </svg>
+        </summary>
+        <div>
+            <div class="metafield-rich_text_field">
+                <div id="paytr_taksit_tablosu"></div>
+            </div>
+        </div>
+    </details>
+</div>
+    
+<style>
+    #paytr_taksit_tablosu{clear: both;font-size: 12px;text-align: center;font-family: Arial, sans-serif;}
+    #paytr_taksit_tablosu::before {display: table;content: " ";}
+    #paytr_taksit_tablosu::after {content: "";clear: both;display: table;}
+    .taksit-tablosu-wrapper{margin: 5px;width: 280px;padding: 12px;cursor: default;text-align: center;display: inline-block;border: 1px solid #e1e1e1; background-color: #8393ac91}
+    .taksit-logo img{max-height: 28px;padding-bottom: 10px;}
+    .taksit-tutari-text{float: left;width: 126px;color: #000000;margin-bottom: 5px;}
+    .taksit-tutar-wrapper{display: inline-block;background-color: #f7f7f7;}
+    .taksit-tutar-wrapper:hover{background-color: #e8e8e8;}
+    .taksit-tutari{float: left;width: 126px;padding: 6px 0;color: #474747;border: 2px solid #ffffff;}
+    .taksit-tutari-bold{font-weight: bold;}
+    @media all and (max-width: 600px) {.taksit-tablosu-wrapper {margin: 5px 0;}}
+</style>
+
+<script src="https://www.paytr.com/odeme/taksit-tablosu/v2?token=--------Token---------------&merchant_id=----id-----&amount= {{ product.price | money_without_currency | remove: ',' }} &taksit=12&tumu=0"></script>
+
+<!-- Taksit Seçenekleri Sonu -->
